@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+   
+</body>
+
+<script>
+    //Create a function called getComputerChoice
+    function getComputerChoice() {  
+       var answers = ["Rock", "Paper", "Scissors"]; //Return either 'Rock', 'Paper', 'Scissors' at random
+       randomAnswer = answers[Math.floor(Math.random() * answers.length)]
+       return randomAnswer;
+    }
+
+    //This function takes two parameters playerSelection and computerSelection
+    //Then it returns a string that declares the winner
+    function playRound(playerSelection, computerSelection) {    
+        if (playerSelection == "Rock" && computerSelection == "Paper") {
+            alert("You lose! Paper beats Rock");
+        } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+            alert("You lose! Rock beats Scissors");
+        } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+            alert("You lose! Scissors beats Paper");
+        } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+            alert("You win! Rock beats Scissors");
+        } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+            alert("You win! Scissors beats Paper");
+        } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+            alert("You win! Paper beats Rock");
+        } else {
+            alert("Same selection. Throw again.")
+        }    
+    }
+    
+    const playerSelection = prompt("Input Rock, Paper, or Scissors"); //Input my choice
+    const computerSelection = getComputerChoice(); //Randomly generated computer choice
+    console.log(playerSelection, computerSelection);
+    //playRound(playerSelection, computerSelection);
+
+    //New function that calls playRound() to play a 5 round game and keeps score
+    function game() {
+        for (i=1; i<6; i++) {
+            alert("Round " + i + " of RPS!");
+            let userInput = prompt("Input Rock, Paper, or Scissors"); //Looped user input
+            playRound(userInput, computerSelection);
+            
+        }
+    }
+
+    game();
+
+</script>
+
+</html>
