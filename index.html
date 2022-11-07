@@ -26,42 +26,41 @@
     //Then it returns a string that declares the winner
     function playRound(playerSelection, computerSelection) { 
 
-        if (playerSelection == "Rock" && computerSelection == "Paper") {
+        if (playerSelection == "rock" && computerSelection == "Paper") {
             alert("You lose! Paper beats Rock");
             computerScore++;
-        } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+        } else if (playerSelection == "scissors" && computerSelection == "Rock") {
             alert("You lose! Rock beats Scissors");
             computerScore++;
-        } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+        } else if (playerSelection == "paper" && computerSelection == "Scissors") {
             alert("You lose! Scissors beats Paper");
             computerScore++;
-        } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        } else if (playerSelection == "rock" && computerSelection == "Scissors") {
             alert("You win! Rock beats Scissors");
             userScore++;
-        } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        } else if (playerSelection == "scissors" && computerSelection == "Paper") {
             alert("You win! Scissors beats Paper");
             userScore++;
-        } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        } else if (playerSelection == "paper" && computerSelection == "Rock") {
             alert("You win! Paper beats Rock");
             userScore++;
         }  else {
             alert("Tie! The same choice was thrown. No Score")
         }
         
-        alert("User Score: " + userScore + " | " + " Computer Score: " + computerScore);
+        alert("User Score: " + userScore + " | " + " Computer Score: " + computerScore);//Score tally ongoing
     }
     
     //New function that calls playRound() to play a 5 round game and keeps score
     function game() {
         for (i=1; i<6; i++) {
-            console.log(playerSelection, computerSelection);
             var computerSelection = getComputerChoice(); //Randomly generated computer choice
-            var playerSelection = prompt("Input Rock, Paper, or Scissors"); //User choice
-            //var playerSelection = userInput.toUpperCase() === userInput.toLocaleLowerCase();
+            var playerSelection = prompt("Input Rock, Paper, or Scissors").toLowerCase() //User input choice
             playRound(playerSelection, computerSelection);
+            console.log(playerSelection, computerSelection);
         }
 
-        if (userScore > computerScore) { //Tally up winner
+        if (userScore > computerScore) { //Tally up winner at the end of the game
             alert("You win! Final score... " + "You: " + userScore + " | " + "Computer: " + computerScore)
         } else if (computerScore > userScore) {
             alert("You lose. Final score... " + "You: " + computerScore  + " | " + "Computer: " + userScore)
