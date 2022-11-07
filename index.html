@@ -11,6 +11,10 @@
 </body>
 
 <script>
+    
+    let userScore = 0; //Global variable for user wins
+    let computerScore = 0; //Global variable for computer wins
+    
     //Create a function called getComputerChoice
     function getComputerChoice() {  
        var answers = ["Rock", "Paper", "Scissors"]; //Return either 'Rock', 'Paper', 'Scissors' at random
@@ -20,36 +24,49 @@
 
     //This function takes two parameters playerSelection and computerSelection
     //Then it returns a string that declares the winner
-    function playRound(playerSelection, computerSelection) {    
+    function playRound(playerSelection, computerSelection) { 
+
         if (playerSelection == "Rock" && computerSelection == "Paper") {
             alert("You lose! Paper beats Rock");
+            computerScore++;
         } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
             alert("You lose! Rock beats Scissors");
+            computerScore++;
         } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
             alert("You lose! Scissors beats Paper");
+            computerScore++;
         } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
             alert("You win! Rock beats Scissors");
+            userScore++;
         } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
             alert("You win! Scissors beats Paper");
+            userScore++;
         } else if (playerSelection == "Paper" && computerSelection == "Rock") {
             alert("You win! Paper beats Rock");
-        } else {
-            alert("Same selection. Throw again.")
-        }    
+            userScore++;
+        }  else {
+            alert("Tie! The same choice was thrown. No Score")
+        }
+        
+        alert("User Score: " + userScore + " | " + " Computer Score: " + computerScore);
     }
     
-    const playerSelection = prompt("Input Rock, Paper, or Scissors"); //Input my choice
-    const computerSelection = getComputerChoice(); //Randomly generated computer choice
-    console.log(playerSelection, computerSelection);
-    //playRound(playerSelection, computerSelection);
-
     //New function that calls playRound() to play a 5 round game and keeps score
     function game() {
         for (i=1; i<6; i++) {
-            alert("Round " + i + " of RPS!");
-            let userInput = prompt("Input Rock, Paper, or Scissors"); //Looped user input
-            playRound(userInput, computerSelection);
-            
+            console.log(playerSelection, computerSelection);
+            var computerSelection = getComputerChoice(); //Randomly generated computer choice
+            var playerSelection = prompt("Input Rock, Paper, or Scissors"); //User choice
+            //var playerSelection = userInput.toUpperCase() === userInput.toLocaleLowerCase();
+            playRound(playerSelection, computerSelection);
+        }
+
+        if (userScore > computerScore) { //Tally up winner
+            alert("You win! Final score... " + "You: " + userScore + " | " + "Computer: " + computerScore)
+        } else if (computerScore > userScore) {
+            alert("You lose. Final score... " + "You: " + computerScore  + " | " + "Computer: " + userScore)
+        } else {
+            alert("Tie game. No Winner.")
         }
     }
 
