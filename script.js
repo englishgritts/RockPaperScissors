@@ -1,13 +1,20 @@
 let cs = document.querySelector('#computer'); //Create variable with h1 computer score element
 let us = document.querySelector('#user'); //Create variable with h1 user score element
 
-const buttons = document.querySelectorAll('button'); //Iterate through the buttons
-buttons.forEach((button) => {
+const buttons = document.querySelectorAll('button'); 
+buttons.forEach((button) => { //Iterate through the buttons
     button.addEventListener('click', () => { //Click event listener
         console.log(button.id);
         playRound(button.id, getComputerChoice()); //Arguments are chosen button and running computer function
         us.textContent = userScore; //Change user score with updated number
         cs.textContent = computerScore; //Change computer score with updated number
+        if (userScore + computerScore == 5 && userScore > computerScore) { //Tally up winner at the end of the game
+            alert("You win! Final score... " + "You: " + userScore + " | " + "Computer: " + computerScore)
+        } else if (userScore + computerScore == 5 && computerScore > userScore) {
+            alert("You lose. Final score... " + "You: " + computerScore  + " | " + "Computer: " + userScore)
+        } else if (userScore + computerScore == 5 && computerScore == userScore) {
+            alert("Tie game. No Winner.")
+        }
     })
 })
 

@@ -1,0 +1,38 @@
+body {
+    background-color: cornsilk;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user {
+    display: flex;
+
+}
+
+.comp {
+    display: flex;
+    justify-content: space-around;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.number {
+    padding-left: 10px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
+    border-color: white;
+    border-radius: 10px;
+}
